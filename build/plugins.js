@@ -24,12 +24,24 @@ export const createVitePlugins = viteEnv => {
     vueSetupExtend({}),
     // 自动引入
     AutoImport({
+      // 生成自动导入的TS声明文件
       dts: false,
       imports: ["vue", "vue-router", "vue-i18n"],
-      resolvers: [ElementPlusResolver()]
+      resolvers: [ElementPlusResolver()],
+      eslintrc: {
+        // 1、改为true用于生成eslint配置。
+        // 2、生成后改回false，避免重复生成消耗
+        enabled: false
+      }
     }),
     Components({
-      resolvers: [ElementPlusResolver()]
+      resolvers: [ElementPlusResolver()],
+      dirs: ["src/components"],
+      eslintrc: {
+        // 1、改为true用于生成eslint配置。
+        // 2、生成后改回false，避免重复生成消耗
+        enabled: false
+      }
     }),
     // 自动 IDE 并将光标定位到 DOM 对应的源代码位置。see: https://inspector.fe-dev.cn/guide/start.html
     VITE_CODEINSPECTOR &&

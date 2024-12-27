@@ -1,3 +1,5 @@
+import { ElLoading } from "element-plus";
+
 /* 全局请求 loading */
 let loadingInstance;
 
